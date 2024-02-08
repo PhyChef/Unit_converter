@@ -2,8 +2,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 
 # Copyright and license text
-license_text = """
-Copyright (c) 2024 Roberto Cimmino
+license_text = """Copyright (c) 2024 Roberto Cimmino
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21,18 +20,25 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-"""
+SOFTWARE."""
 
 # Function to display the license information
 def show_license():
+    # Create a new Toplevel window to display the license information
     license_window = tk.Toplevel(window)
     license_window.title("License Information")
-    license_window.geometry("600x400")  # Adjust window size
+    license_window.geometry("700x450")  # Adjust window size
     license_window.resizable(False, False)
 
-    license_label = tk.Label(license_window, text=license_text, justify="left")
-    license_label.pack(padx=5, pady=3, fill="both", expand=True)
+    # Create a scrollable text widget to display the license text
+    license_text_widget = tk.Text(license_window, wrap="word")
+    license_text_widget.pack(fill="both", expand=True)
+
+    # Insert the license text into the text widget
+    license_text_widget.insert("1.0", license_text)
+    
+    # Disable text widget to prevent editing
+    license_text_widget.config(state="disabled")
 
 # Create Tkinter window with adjusted initial width
 window = tk.Tk()
